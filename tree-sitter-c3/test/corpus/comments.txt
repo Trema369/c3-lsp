@@ -1,0 +1,319 @@
+================================================================================
+Block comment
+================================================================================
+
+/*
+ * Testing block comment
+ */
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (block_comment
+    (block_comment_text)))
+
+================================================================================
+Singleline Doc comment
+================================================================================
+<* Single doc text *>
+module foo;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_declaration
+    (doc_comment
+      (doc_comment_text))
+    (path_ident
+      (ident))))
+
+================================================================================
+Multiline Doc comment
+================================================================================
+<*
+Multiple line doc
+Another line
+*>
+module foo;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_declaration
+    (doc_comment
+      (doc_comment_text))
+    (path_ident
+      (ident))))
+
+================================================================================
+Param Doc comment
+================================================================================
+<*
+ @param foo : "text"
+*>
+module foo;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_declaration
+    (doc_comment
+      (doc_comment_contract
+        (at_ident)
+        (ident)
+        (string_expr
+          (string_literal
+            (string_content)))))
+    (path_ident
+      (ident))))
+
+================================================================================
+Param Doc 2 comments
+================================================================================
+<*
+ @param foo : "text"
+ @param [&in] bar : `text` "text"
+ @param [&in] bar
+   : `text` "text"
+ @param [&in] bar :
+   `text` "text"
+ @param [&in] bar
+   :
+   `text`
+   "text"
+*>
+fn void foo() {}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (doc_comment
+      (doc_comment_contract
+        (at_ident)
+        (ident)
+        (string_expr
+          (string_literal
+            (string_content))))
+      (doc_comment_contract
+        (at_ident)
+        (doc_comment_contract_descriptor)
+        (ident)
+        (string_expr
+          (raw_string_literal
+            (raw_string_content))
+          (string_literal
+            (string_content))))
+      (doc_comment_contract
+        (at_ident)
+        (doc_comment_contract_descriptor)
+        (ident)
+        (string_expr
+          (raw_string_literal
+            (raw_string_content))
+          (string_literal
+            (string_content))))
+      (doc_comment_contract
+        (at_ident)
+        (doc_comment_contract_descriptor)
+        (ident)
+        (string_expr
+          (raw_string_literal
+            (raw_string_content))
+          (string_literal
+            (string_content))))
+      (doc_comment_contract
+        (at_ident)
+        (doc_comment_contract_descriptor)
+        (ident)
+        (string_expr
+          (raw_string_literal
+            (raw_string_content))
+          (string_literal
+            (string_content)))))
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt))))
+
+================================================================================
+Require Doc
+================================================================================
+<*
+ @require new_size == 0 || self.capacity != 0, foo()
+*>
+module foo;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_declaration
+    (doc_comment
+      (doc_comment_contract
+        (at_ident)
+        (binary_expr
+          (binary_expr
+            (ident_expr
+              (ident))
+            (integer_literal))
+          (binary_expr
+            (field_expr
+              (ident_expr
+                (ident))
+              (access_ident
+                (ident)))
+            (integer_literal)))
+        (call_expr
+          (ident_expr
+            (ident))
+          (call_arg_list))))
+    (path_ident
+      (ident))))
+
+================================================================================
+Require Doc single line
+================================================================================
+<* @require foo == 0 *>
+module foo;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_declaration
+    (doc_comment
+      (doc_comment_contract
+        (at_ident)
+        (binary_expr
+          (ident_expr
+            (ident))
+          (integer_literal))))
+    (path_ident
+      (ident))))
+
+================================================================================
+Doc compound
+================================================================================
+<*
+ A document
+ @param foo : "text"
+ @param [&in] bar : `text`
+ @pure
+ @something "with text"
+*>
+module foo;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_declaration
+    (doc_comment
+      (doc_comment_text)
+      (doc_comment_contract
+        (at_ident)
+        (ident)
+        (string_expr
+          (string_literal
+            (string_content))))
+      (doc_comment_contract
+        (at_ident)
+        (doc_comment_contract_descriptor)
+        (ident)
+        (string_expr
+          (raw_string_literal
+            (raw_string_content))))
+      (doc_comment_contract
+        (at_ident))
+      (doc_comment_contract
+        (at_ident)
+        (string_expr
+          (string_literal
+            (string_content)))))
+    (path_ident
+      (ident))))
+
+================================================================================
+Doc compound 2
+================================================================================
+<* A document
+  @require foo == 0 *>
+module foo;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_declaration
+    (doc_comment
+      (doc_comment_text)
+      (doc_comment_contract
+        (at_ident)
+        (binary_expr
+          (ident_expr
+            (ident))
+          (integer_literal))))
+    (path_ident
+      (ident))))
+
+================================================================================
+Doc @ inside doc
+================================================================================
+<*
+ A document @param -- must be ignored
+   also @this
+ @param foo : "text"
+ @param [&in] bar : `text`
+*>
+module foo;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_declaration
+    (doc_comment
+      (doc_comment_text)
+      (doc_comment_contract
+        (at_ident)
+        (ident)
+        (string_expr
+          (string_literal
+            (string_content))))
+      (doc_comment_contract
+        (at_ident)
+        (doc_comment_contract_descriptor)
+        (ident)
+        (string_expr
+          (raw_string_literal
+            (raw_string_content)))))
+    (path_ident
+      (ident))))
+
+================================================================================
+Empty doc
+================================================================================
+<**>
+module foo;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_declaration
+    (doc_comment)
+    (path_ident
+      (ident))))
+
+================================================================================
+Error doc
+:error
+================================================================================
+<*
+ Hello
+ @require a != 0
+ More text?
+*>
+module foo;
+
+--------------------------------------------------------------------------------
+
+

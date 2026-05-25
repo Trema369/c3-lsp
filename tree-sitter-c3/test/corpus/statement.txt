@@ -1,0 +1,695 @@
+================================================================================
+If statements
+================================================================================
+
+fn void main() {
+    if (true) false;
+    if (1) {
+        0;
+    }
+    if (true) {
+        0;
+    } else {
+        1;
+    }
+    if (a) {
+        0;
+    } else if (b) {
+        1;
+    } else {
+        2;
+    }
+
+    if (int i = 0, try optional && 1 && try optional) {}
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (if_stmt
+          (paren_cond)
+          (expr_stmt))
+        (if_stmt
+          (paren_cond
+            (integer_literal))
+          (compound_stmt
+            (expr_stmt
+              (integer_literal))))
+        (if_stmt
+          (paren_cond)
+          (compound_stmt
+            (expr_stmt
+              (integer_literal)))
+          (else_part
+            (compound_stmt
+              (expr_stmt
+                (integer_literal)))))
+        (if_stmt
+          (paren_cond
+            (ident_expr
+              (ident)))
+          (compound_stmt
+            (expr_stmt
+              (integer_literal)))
+          (else_part
+            (if_stmt
+              (paren_cond
+                (ident_expr
+                  (ident)))
+              (compound_stmt
+                (expr_stmt
+                  (integer_literal)))
+              (else_part
+                (compound_stmt
+                  (expr_stmt
+                    (integer_literal)))))))
+        (if_stmt
+          (paren_cond
+            (declaration
+              (type
+                (base_type_name))
+              (ident)
+              (integer_literal))
+            (try_unwrap
+              (ident_expr
+                (ident)))
+            (integer_literal)
+            (try_unwrap
+              (ident_expr
+                (ident))))
+          (compound_stmt))))))
+
+================================================================================
+While statements
+================================================================================
+
+fn void main() {
+    int i = 0;
+    while (i < 10) {
+        i += 1;
+        i++;
+    }
+    while (1) {
+        print(1);
+    }
+    while (Point* p = getPoint())
+    {
+        print(p.calculate());
+    }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (declaration_stmt
+          (declaration
+            (type
+              (base_type_name))
+            (ident)
+            (integer_literal)))
+        (while_stmt
+          (paren_cond
+            (binary_expr
+              (ident_expr
+                (ident))
+              (integer_literal)))
+          (compound_stmt
+            (expr_stmt
+              (assignment_expr
+                (ident_expr
+                  (ident))
+                (integer_literal)))
+            (expr_stmt
+              (update_expr
+                (ident_expr
+                  (ident))))))
+        (while_stmt
+          (paren_cond
+            (integer_literal))
+          (compound_stmt
+            (expr_stmt
+              (call_expr
+                (ident_expr
+                  (ident))
+                (call_arg_list
+                  (call_arg
+                    (integer_literal)))))))
+        (while_stmt
+          (paren_cond
+            (declaration
+              (type
+                (path_type_ident
+                  (type_ident))
+                (type_suffix))
+              (ident)
+              (call_expr
+                (ident_expr
+                  (ident))
+                (call_arg_list))))
+          (compound_stmt
+            (expr_stmt
+              (call_expr
+                (ident_expr
+                  (ident))
+                (call_arg_list
+                  (call_arg
+                    (call_expr
+                      (field_expr
+                        (ident_expr
+                          (ident))
+                        (access_ident
+                          (ident)))
+                      (call_arg_list))))))))))))
+
+================================================================================
+Do statements
+================================================================================
+
+fn void main() {
+    do
+    {
+        print(i);
+    };
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (do_stmt
+          (compound_stmt
+            (expr_stmt
+              (call_expr
+                (ident_expr
+                  (ident))
+                (call_arg_list
+                  (call_arg
+                    (ident_expr
+                      (ident))))))))))))
+
+================================================================================
+For statements
+================================================================================
+
+fn void main() {
+    for (int i = 0; i < 10; i++) {
+        print(i);
+    }
+    for (i = 0; i < 10; i++) {
+        print(i);
+    }
+    for (;;) {
+        print(1);
+    }
+    for (; i < 10;) {
+        print(1);
+    }
+    for (;; i++) {
+        print(1);
+    }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (for_stmt
+          (for_cond
+            (comma_decl_or_expr
+              (declaration
+                (type
+                  (base_type_name))
+                (ident)
+                (integer_literal)))
+            (binary_expr
+              (ident_expr
+                (ident))
+              (integer_literal))
+            (comma_decl_or_expr
+              (update_expr
+                (ident_expr
+                  (ident)))))
+          (compound_stmt
+            (expr_stmt
+              (call_expr
+                (ident_expr
+                  (ident))
+                (call_arg_list
+                  (call_arg
+                    (ident_expr
+                      (ident))))))))
+        (for_stmt
+          (for_cond
+            (comma_decl_or_expr
+              (assignment_expr
+                (ident_expr
+                  (ident))
+                (integer_literal)))
+            (binary_expr
+              (ident_expr
+                (ident))
+              (integer_literal))
+            (comma_decl_or_expr
+              (update_expr
+                (ident_expr
+                  (ident)))))
+          (compound_stmt
+            (expr_stmt
+              (call_expr
+                (ident_expr
+                  (ident))
+                (call_arg_list
+                  (call_arg
+                    (ident_expr
+                      (ident))))))))
+        (for_stmt
+          (for_cond)
+          (compound_stmt
+            (expr_stmt
+              (call_expr
+                (ident_expr
+                  (ident))
+                (call_arg_list
+                  (call_arg
+                    (integer_literal)))))))
+        (for_stmt
+          (for_cond
+            (binary_expr
+              (ident_expr
+                (ident))
+              (integer_literal)))
+          (compound_stmt
+            (expr_stmt
+              (call_expr
+                (ident_expr
+                  (ident))
+                (call_arg_list
+                  (call_arg
+                    (integer_literal)))))))
+        (for_stmt
+          (for_cond
+            (comma_decl_or_expr
+              (update_expr
+                (ident_expr
+                  (ident)))))
+          (compound_stmt
+            (expr_stmt
+              (call_expr
+                (ident_expr
+                  (ident))
+                (call_arg_list
+                  (call_arg
+                    (integer_literal)))))))))))
+
+================================================================================
+Foreach statements
+================================================================================
+
+fn void main() {
+    foreach (index, value : values)
+    {
+        io::printfn("%d: %f", index, value);
+    }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (foreach_stmt
+          (foreach_cond
+            (foreach_var
+              (ident))
+            (foreach_var
+              (ident))
+            (ident_expr
+              (ident)))
+          (compound_stmt
+            (expr_stmt
+              (call_expr
+                (ident_expr
+                  (module_resolution
+                    (ident))
+                  (ident))
+                (call_arg_list
+                  (call_arg
+                    (string_literal
+                      (string_content)))
+                  (call_arg
+                    (ident_expr
+                      (ident)))
+                  (call_arg
+                    (ident_expr
+                      (ident))))))))))))
+
+================================================================================
+Defer statements
+================================================================================
+
+fn void main() {
+    defer free();
+    defer {
+        i = i + 1;
+        break;
+    }
+    defer {
+        defer test1();
+        test2();
+        defer test3();
+    }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (defer_stmt
+          (expr_stmt
+            (call_expr
+              (ident_expr
+                (ident))
+              (call_arg_list))))
+        (defer_stmt
+          (compound_stmt
+            (expr_stmt
+              (assignment_expr
+                (ident_expr
+                  (ident))
+                (binary_expr
+                  (ident_expr
+                    (ident))
+                  (integer_literal))))
+            (break_stmt)))
+        (defer_stmt
+          (compound_stmt
+            (defer_stmt
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list))))
+            (expr_stmt
+              (call_expr
+                (ident_expr
+                  (ident))
+                (call_arg_list)))
+            (defer_stmt
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list))))))))))
+
+================================================================================
+Switch statements
+================================================================================
+
+fn void main() {
+    switch {
+      case 1:
+      case 2:
+        a();
+        nextcase;
+      case 3:
+        b();
+      default:
+        c();
+        break;
+    }
+
+    switch {
+      case true:
+        return;
+    }
+
+    switch (i) {
+      case 1:
+        doSomething();
+        nextcase;
+      case 2:
+        doSomethingElse();
+    }
+
+    switch (true)
+    {
+        case x < 0:
+            xless();
+        case x > 0:
+            xgreater();
+        default:
+            xequals();
+    }
+
+    switch {
+      case foo() > 0:
+        bar();
+      case test() == 1:
+        baz();
+    }
+
+    switch LABEL: (i) {
+      case 1:
+        doSomething();
+        nextcase LABEL: 3;
+      case 2:
+        doSomethingElse();
+      case 3:
+        nextcase rand();
+      default:
+        io::println("Ended");
+    }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (switch_stmt
+          (switch_body
+            (case_stmt
+              (integer_literal))
+            (case_stmt
+              (integer_literal)
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list)))
+              (nextcase_stmt))
+            (case_stmt
+              (integer_literal)
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list))))
+            (default_stmt
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list)))
+              (break_stmt))))
+        (switch_stmt
+          (switch_body
+            (case_stmt
+              (return_stmt))))
+        (switch_stmt
+          (paren_cond
+            (ident_expr
+              (ident)))
+          (switch_body
+            (case_stmt
+              (integer_literal)
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list)))
+              (nextcase_stmt))
+            (case_stmt
+              (integer_literal)
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list))))))
+        (switch_stmt
+          (paren_cond)
+          (switch_body
+            (case_stmt
+              (binary_expr
+                (ident_expr
+                  (ident))
+                (integer_literal))
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list))))
+            (case_stmt
+              (binary_expr
+                (ident_expr
+                  (ident))
+                (integer_literal))
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list))))
+            (default_stmt
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list))))))
+        (switch_stmt
+          (switch_body
+            (case_stmt
+              (binary_expr
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list))
+                (integer_literal))
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list))))
+            (case_stmt
+              (binary_expr
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list))
+                (integer_literal))
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list))))))
+        (switch_stmt
+          (label
+            (const_ident))
+          (paren_cond
+            (ident_expr
+              (ident)))
+          (switch_body
+            (case_stmt
+              (integer_literal)
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list)))
+              (nextcase_stmt
+                (label_target
+                  (const_ident))
+                (integer_literal)))
+            (case_stmt
+              (integer_literal)
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list))))
+            (case_stmt
+              (integer_literal)
+              (nextcase_stmt
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list))))
+            (default_stmt
+              (expr_stmt
+                (call_expr
+                  (ident_expr
+                    (module_resolution
+                      (ident))
+                    (ident))
+                  (call_arg_list
+                    (call_arg
+                      (string_literal
+                        (string_content)))))))))))))
+
+================================================================================
+Compile-time statements
+================================================================================
+
+$assert true && false : "%s", "message";
+$error "Foo %s", 1;
+$assert 0 > 1 : "Foo %s", 0.0002;
+
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (ct_assert_stmt
+    (binary_expr)
+    (string_literal
+      (string_content))
+    (string_literal
+      (string_content)))
+  (ct_error_stmt
+    (string_literal
+      (string_content))
+    (integer_literal))
+  (ct_assert_stmt
+    (binary_expr
+      (integer_literal)
+      (integer_literal))
+    (string_literal
+      (string_content))
+    (real_literal)))

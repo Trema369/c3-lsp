@@ -21,7 +21,7 @@ var (
 )
 
 func main() {
-	logger := getLogger("/data/data/com.termux/files/home/projects/c3-lsp/log.txt")
+	logger := getLogger("/home/trema/Projects/learning/golang/lsp/log.txt")
 
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Buffer(make([]byte, 1024*1024), 1024*1024)
@@ -37,7 +37,7 @@ func main() {
 			logger.Println("got an error", err)
 			continue
 		}
-		handleMessage(logger, writer, &state, method, contents)
+		handleMessage(logger, writer, state, method, contents)
 	}
 }
 
@@ -56,6 +56,18 @@ func handleMessage(logger *log.Logger, writer io.Writer, state *analysis.State, 
 		msg := lsp.NewInitalizeResponse(request.ID)
 		writeResponse(writer, msg)
 		logger.Print("send the reply")
+
+		go func() {
+			stdLibPath := "/usr/local/lib/c3/"
+
+			logger.Printf("Indexing C3 standard library path: %s", stdLibPath)
+			if err := state.IndexDirectory(stdLibPath); err != nil {
+				logger.Printf("Global library index failed: %s", err)
+			} else {
+				modCount := state.GetGlobalIndexCount()
+				logger.Printf("Global index built successfully! Cached %d active submodules.", modCount)
+			}
+		}()
 
 	case "textDocument/didOpen":
 		var request lsp.DidOpenTextDocumentNotification
@@ -95,6 +107,25 @@ func handleMessage(logger *log.Logger, writer io.Writer, state *analysis.State, 
 			},
 		}
 		writeResponse(writer, response)
+	case "textDocument/completion":
+		var request lsp.CompletionRequest
+		if err := json.Unmarshal(contents, &request); err != nil {
+			logger.Printf("textDocument/completion parsing failed: %s", err)
+			return
+		}
+
+		items := state.GetCompletionItems(request.Params.TextDocument.URI, request.Params.Position)
+
+		response := lsp.CompletionResponse{
+			Response: lsp.Response{
+				RPC: "2.0",
+				ID:  request.ID,
+			},
+			Result: items,
+		}
+
+		writeResponse(writer, response)
+		logger.Printf("Dispatched %d completion items back to client", len(items))
 	}
 }
 
@@ -129,6 +160,8 @@ func triggerDiagnostics(writer io.Writer, logger *log.Logger, state *analysis.St
 			Diagnostics: diagnostics,
 		},
 	}
+	debugBytes, _ := json.Marshal(notification)
+	logger.Printf("ULTIMATE JSON TRUTH: %s", string(debugBytes))
 
 	writeResponse(writer, notification)
 	logger.Printf("Dispatched diagnostics notification back to client for: %s", uri)

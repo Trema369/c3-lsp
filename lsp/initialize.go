@@ -25,8 +25,12 @@ type InitializeResult struct {
 }
 
 type ServerCapabilities struct {
-	TextDocumentSync int  `json:"textDocumentSync"`
-	HoverProvider    bool `json:"hoverProvider"`
+	TextDocumentSync   int               `json:"textDocumentSync"`
+	HoverProvider      bool              `json:"hoverProvider"`
+	CompletionProvider CompletionOptions `json:"completionProvider"`
+}
+type CompletionOptions struct {
+	TriggerCharacters []string `json:"triggerCharacters,omitempty"`
 }
 type ServerInfo struct {
 	Name    string `json:"name"`
@@ -43,6 +47,9 @@ func NewInitalizeResponse(id int) InitializeResponse {
 			Capabilities: ServerCapabilities{
 				TextDocumentSync: 1,
 				HoverProvider:    true,
+				CompletionProvider: CompletionOptions{
+					TriggerCharacters: []string{".", "::"},
+				},
 			},
 			ServerInfo: ServerInfo{
 				Name:    "test/lsp",

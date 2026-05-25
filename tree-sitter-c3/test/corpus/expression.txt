@@ -1,0 +1,1798 @@
+================================================================================
+Integer literals
+================================================================================
+
+int a = 128;
+int b = 3_000_000;
+long b = 3_000_000l;
+ulong b = 3_000_000ul;
+uint c = 4_000u;
+long d = 0xC4_FF;
+long d = 0xC4_FFll;
+ulong d = 0xC4_FFull;
+int e = 0o775_111;
+uint e = 0o775_111u;
+char f = 0b1001_1001;
+ichar f = 0b1001_1001;
+char f = 0b1001_1001u;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (integer_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (integer_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (integer_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (integer_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (integer_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (integer_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (integer_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (integer_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (integer_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (integer_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (integer_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (integer_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (integer_literal))))
+
+================================================================================
+Float literals
+================================================================================
+
+float a = 1f;
+float a = 1.;
+float a = 1.0;
+float a = 1.f;
+float a = 1.0f;
+float a = 1.e1;
+float a = 1.0e1;
+float a = 1.0e1f;
+float a = 1.0e-1f;
+float a = 1.E1;
+float a = 1.0E1;
+float a = 1.0E1f;
+float a = 1.0E-1f;
+double b = 1.0e1d;
+double b = 1.0e-1d;
+double c = 0xc1fp4;
+double c = 0xc2f.p4;
+double c = 0xc2f.p4f;
+double c = 0xc2f.p4d;
+double c = 0xc3f.2fp+4;
+double c = 0xc3f.2fp+4f;
+double c = 0xc3f.2fp+4d;
+double c = 0xc4f.2fp-4;
+double c = 0xc4f.2fp-4f;
+double c = 0xc4f.2fp-4d;
+double c = 0XC1FP4;
+double c = 0XC2F.P4;
+double c = 0XC2F.P4F;
+double c = 0XC2F.P4D;
+double c = 0XC3F.2FP+4;
+double c = 0XC3F.2FP+4F;
+double c = 0XC3F.2FP+4D;
+double c = 0XC4F.2FP-4;
+double c = 0XC4F.2FP-4F;
+double c = 0XC4F.2FP-4D;
+float128 d = 1.0e+1f;
+float128 d = 1.0E+1f;
+float128 d = 0xdead.0eafP+1f;
+float128 d = 0XDEAD.0EAFP+1f;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (real_literal))))
+
+================================================================================
+Boolean literals
+================================================================================
+
+bool a = true;
+bool b = false;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident))))
+
+================================================================================
+Character literals
+================================================================================
+
+char a = 'a';
+char b = '\0';
+char c = '\t';
+char d = '\'';
+char e = 'b';
+char f = 'c';
+char g = '\xa1';
+char h = '\x1A';
+short i = '\u1A4F';
+int j = '\U1A4F2D5B';
+int k = 'abcd';
+int l = 'a\xffd';
+int m = '퀀';
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (char_literal
+        (char_content))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (char_literal
+        (escape_sequence))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (char_literal
+        (escape_sequence))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (char_literal
+        (escape_sequence))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (char_literal
+        (char_content))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (char_literal
+        (char_content))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (char_literal
+        (escape_sequence))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (char_literal
+        (escape_sequence))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (char_literal
+        (escape_sequence))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (char_literal
+        (escape_sequence))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (char_literal
+        (char_content))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (char_literal
+        (char_content)
+        (escape_sequence)
+        (char_content))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (char_literal
+        (char_content)))))
+
+================================================================================
+String literals
+================================================================================
+
+char* a = "a";
+char* b = "\"hi\"";
+char* c = "bonjour";
+char* d = "guten morgen";
+char* e = "buenos dias";
+char* f = "buongiorno";
+char* g = `testing this ``now`` `;
+char* h = x"4865 6c6c 6f20 776f 726c 6421";
+char* i = b64"Rk9PQkFSMTE=";
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (string_literal
+        (string_content))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (string_literal
+        (escape_sequence)
+        (string_content)
+        (escape_sequence))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (string_literal
+        (string_content))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (string_literal
+        (string_content))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (string_literal
+        (string_content))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (string_literal
+        (string_content))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (raw_string_literal
+        (raw_string_content))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (bytes_expr
+        (bytes_literal))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (bytes_expr
+        (bytes_literal)))))
+
+================================================================================
+Compound literals
+================================================================================
+
+fn void main() {
+    (Foo) { 1, 2.0, .field = "string" };
+    (LinkedList) { .allocator = alloc };
+    LinkedList a = { .allocator = alloc, .size = 0 };
+    *list = { .allocator = alloc, .size = 0 };
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (expr_stmt
+          (typed_initializer_list
+            (type
+              (path_type_ident
+                (type_ident)))
+            (initializer_list
+              (initializer_element
+                (integer_literal))
+              (initializer_element
+                (real_literal))
+              (initializer_element
+                (param_path
+                  (param_path_element
+                    (access_ident
+                      (ident))))
+                (string_literal
+                  (string_content))))))
+        (expr_stmt
+          (typed_initializer_list
+            (type
+              (path_type_ident
+                (type_ident)))
+            (initializer_list
+              (initializer_element
+                (param_path
+                  (param_path_element
+                    (access_ident
+                      (ident))))
+                (ident_expr
+                  (ident))))))
+        (declaration_stmt
+          (declaration
+            (type
+              (path_type_ident
+                (type_ident)))
+            (ident)
+            (initializer_list
+              (initializer_element
+                (param_path
+                  (param_path_element
+                    (access_ident
+                      (ident))))
+                (ident_expr
+                  (ident)))
+              (initializer_element
+                (param_path
+                  (param_path_element
+                    (access_ident
+                      (ident))))
+                (integer_literal)))))
+        (expr_stmt
+          (assignment_expr
+            (unary_expr
+              (ident_expr
+                (ident)))
+            (initializer_list
+              (initializer_element
+                (param_path
+                  (param_path_element
+                    (access_ident
+                      (ident))))
+                (ident_expr
+                  (ident)))
+              (initializer_element
+                (param_path
+                  (param_path_element
+                    (access_ident
+                      (ident))))
+                (integer_literal)))))))))
+
+================================================================================
+Lambda expressions
+================================================================================
+
+fn void main() {
+    CallbackFn f = fn (i) => i + 1;
+    apply(x, fn (i) => i * i);
+    apply(x, fn int(int i) { return i * i; });
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (declaration_stmt
+          (declaration
+            (type
+              (path_type_ident
+                (type_ident)))
+            (ident)
+            (lambda_expr
+              (lambda_declaration
+                (func_param_list
+                  (param
+                    (ident))))
+              (implies_body
+                (binary_expr
+                  (ident_expr
+                    (ident))
+                  (integer_literal))))))
+        (expr_stmt
+          (call_expr
+            (ident_expr
+              (ident))
+            (call_arg_list
+              (call_arg
+                (ident_expr
+                  (ident)))
+              (call_arg
+                (lambda_expr
+                  (lambda_declaration
+                    (func_param_list
+                      (param
+                        (ident))))
+                  (implies_body
+                    (binary_expr
+                      (ident_expr
+                        (ident))
+                      (ident_expr
+                        (ident)))))))))
+        (expr_stmt
+          (call_expr
+            (ident_expr
+              (ident))
+            (call_arg_list
+              (call_arg
+                (ident_expr
+                  (ident)))
+              (call_arg
+                (lambda_declaration
+                  (type
+                    (base_type_name))
+                  (func_param_list
+                    (param
+                      (type
+                        (base_type_name))
+                      (ident))))
+                (compound_stmt
+                  (return_stmt
+                    (binary_expr
+                      (ident_expr
+                        (ident))
+                      (ident_expr
+                        (ident)))))))))))))
+
+================================================================================
+Assignment expressions
+================================================================================
+
+fn void main() {
+    x = y;
+    x += 1;
+    x += y;
+    *s = &p;
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      return_type: (type
+        (base_type_name))
+      name: (ident))
+    (func_param_list)
+    body: (macro_func_body
+      (compound_stmt
+        (expr_stmt
+          (assignment_expr
+            left: (ident_expr
+              (ident))
+            right: (ident_expr
+              (ident))))
+        (expr_stmt
+          (assignment_expr
+            left: (ident_expr
+              (ident))
+            right: (integer_literal)))
+        (expr_stmt
+          (assignment_expr
+            left: (ident_expr
+              (ident))
+            right: (ident_expr
+              (ident))))
+        (expr_stmt
+          (assignment_expr
+            left: (unary_expr
+              argument: (ident_expr
+                (ident)))
+            right: (unary_expr
+              argument: (ident_expr
+                (ident)))))))))
+
+================================================================================
+Unary expressions
+================================================================================
+
+fn void main() {
+    -a;
+    !b;
+    *c;
+    &d;
+    &&12;
+    &(*(&(e)));
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (expr_stmt
+          (unary_expr
+            (ident_expr
+              (ident))))
+        (expr_stmt
+          (unary_expr
+            (ident_expr
+              (ident))))
+        (expr_stmt
+          (unary_expr
+            (ident_expr
+              (ident))))
+        (expr_stmt
+          (unary_expr
+            (ident_expr
+              (ident))))
+        (expr_stmt
+          (unary_expr
+            (integer_literal)))
+        (expr_stmt
+          (unary_expr
+            (paren_expr
+              (unary_expr
+                (paren_expr
+                  (unary_expr
+                    (paren_expr
+                      (ident_expr
+                        (ident)))))))))))))
+
+================================================================================
+Binary expressions
+================================================================================
+
+fn void main() {
+    a - a;
+    !b && c;
+    c || !b;
+    12 + 12;
+    100 * d;
+    2 * (10 + 4);
+    (2) * (10 + (4 << 2));
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (expr_stmt
+          (binary_expr
+            (ident_expr
+              (ident))
+            (ident_expr
+              (ident))))
+        (expr_stmt
+          (binary_expr
+            (unary_expr
+              (ident_expr
+                (ident)))
+            (ident_expr
+              (ident))))
+        (expr_stmt
+          (binary_expr
+            (ident_expr
+              (ident))
+            (unary_expr
+              (ident_expr
+                (ident)))))
+        (expr_stmt
+          (binary_expr
+            (integer_literal)
+            (integer_literal)))
+        (expr_stmt
+          (binary_expr
+            (integer_literal)
+            (ident_expr
+              (ident))))
+        (expr_stmt
+          (binary_expr
+            (integer_literal)
+            (paren_expr
+              (binary_expr
+                (integer_literal)
+                (integer_literal)))))
+        (expr_stmt
+          (binary_expr
+            (paren_expr
+              (integer_literal))
+            (paren_expr
+              (binary_expr
+                (integer_literal)
+                (paren_expr
+                  (binary_expr
+                    (integer_literal)
+                    (integer_literal)))))))))))
+
+================================================================================
+Subscript expressions
+================================================================================
+
+fn void main() {
+    a[0];
+    b[:];
+    b[..];
+    c[1:];
+    c[1..];
+    d[1:2];
+    d[1..2];
+    e[a];
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (expr_stmt
+          (subscript_expr
+            (ident_expr
+              (ident))
+            (integer_literal)))
+        (expr_stmt
+          (subscript_expr
+            (ident_expr
+              (ident))
+            (range_expr)))
+        (expr_stmt
+          (subscript_expr
+            (ident_expr
+              (ident))
+            (range_expr)))
+        (expr_stmt
+          (subscript_expr
+            (ident_expr
+              (ident))
+            (range_expr
+              (integer_literal))))
+        (expr_stmt
+          (subscript_expr
+            (ident_expr
+              (ident))
+            (range_expr
+              (integer_literal))))
+        (expr_stmt
+          (subscript_expr
+            (ident_expr
+              (ident))
+            (range_expr
+              (integer_literal)
+              (integer_literal))))
+        (expr_stmt
+          (subscript_expr
+            (ident_expr
+              (ident))
+            (range_expr
+              (integer_literal)
+              (integer_literal))))
+        (expr_stmt
+          (subscript_expr
+            (ident_expr
+              (ident))
+            (ident_expr
+              (ident))))))))
+
+================================================================================
+Call expressions
+================================================================================
+
+fn void main() {
+    a();
+    b(c, d);
+    e.f(g);
+    i.j.k();
+    l::m::n();
+    o::p();
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (expr_stmt
+          (call_expr
+            (ident_expr
+              (ident))
+            (call_arg_list)))
+        (expr_stmt
+          (call_expr
+            (ident_expr
+              (ident))
+            (call_arg_list
+              (call_arg
+                (ident_expr
+                  (ident)))
+              (call_arg
+                (ident_expr
+                  (ident))))))
+        (expr_stmt
+          (call_expr
+            (field_expr
+              (ident_expr
+                (ident))
+              (access_ident
+                (ident)))
+            (call_arg_list
+              (call_arg
+                (ident_expr
+                  (ident))))))
+        (expr_stmt
+          (call_expr
+            (field_expr
+              (field_expr
+                (ident_expr
+                  (ident))
+                (access_ident
+                  (ident)))
+              (access_ident
+                (ident)))
+            (call_arg_list)))
+        (expr_stmt
+          (call_expr
+            (ident_expr
+              (module_resolution
+                (ident))
+              (module_resolution
+                (ident))
+              (ident))
+            (call_arg_list)))
+        (expr_stmt
+          (call_expr
+            (ident_expr
+              (module_resolution
+                (ident))
+              (ident))
+            (call_arg_list)))))))
+
+================================================================================
+Field expressions
+================================================================================
+
+fn void main() {
+    a.b;
+    *a.b;
+    &a.b;
+    a.b.c;
+    a.b.c.d;
+    a::b::c.d.e;
+    a::b::c.d.e();
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (expr_stmt
+          (field_expr
+            (ident_expr
+              (ident))
+            (access_ident
+              (ident))))
+        (expr_stmt
+          (unary_expr
+            (field_expr
+              (ident_expr
+                (ident))
+              (access_ident
+                (ident)))))
+        (expr_stmt
+          (unary_expr
+            (field_expr
+              (ident_expr
+                (ident))
+              (access_ident
+                (ident)))))
+        (expr_stmt
+          (field_expr
+            (field_expr
+              (ident_expr
+                (ident))
+              (access_ident
+                (ident)))
+            (access_ident
+              (ident))))
+        (expr_stmt
+          (field_expr
+            (field_expr
+              (field_expr
+                (ident_expr
+                  (ident))
+                (access_ident
+                  (ident)))
+              (access_ident
+                (ident)))
+            (access_ident
+              (ident))))
+        (expr_stmt
+          (field_expr
+            (field_expr
+              (ident_expr
+                (module_resolution
+                  (ident))
+                (module_resolution
+                  (ident))
+                (ident))
+              (access_ident
+                (ident)))
+            (access_ident
+              (ident))))
+        (expr_stmt
+          (call_expr
+            (field_expr
+              (field_expr
+                (ident_expr
+                  (module_resolution
+                    (ident))
+                  (module_resolution
+                    (ident))
+                  (ident))
+                (access_ident
+                  (ident)))
+              (access_ident
+                (ident)))
+            (call_arg_list)))))))
+
+================================================================================
+Try expressions
+================================================================================
+
+fn void main() {
+    File*? res = findFile();
+    if (try res)
+    {
+        printf("I found the file\n");
+    }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (declaration_stmt
+          (declaration
+            (type
+              (path_type_ident
+                (type_ident))
+              (type_suffix))
+            (ident)
+            (call_expr
+              (ident_expr
+                (ident))
+              (call_arg_list))))
+        (if_stmt
+          (paren_cond
+            (try_unwrap
+              (ident_expr
+                (ident))))
+          (compound_stmt
+            (expr_stmt
+              (call_expr
+                (ident_expr
+                  (ident))
+                (call_arg_list
+                  (call_arg
+                    (string_literal
+                      (string_content)
+                      (escape_sequence))))))))))))
+
+================================================================================
+Catch expressions
+================================================================================
+
+fn void main() {
+    File*? res = findFile();
+    if (catch res)
+    {
+        printf("An error occurred!\n");
+    }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (declaration_stmt
+          (declaration
+            (type
+              (path_type_ident
+                (type_ident))
+              (type_suffix))
+            (ident)
+            (call_expr
+              (ident_expr
+                (ident))
+              (call_arg_list))))
+        (if_stmt
+          (paren_cond
+            (catch_unwrap
+              (catch_unwrap_list
+                (ident_expr
+                  (ident)))))
+          (compound_stmt
+            (expr_stmt
+              (call_expr
+                (ident_expr
+                  (ident))
+                (call_arg_list
+                  (call_arg
+                    (string_literal
+                      (string_content)
+                      (escape_sequence))))))))))))
+
+================================================================================
+Precedence
+================================================================================
+
+fn void main() {
+  a + b * c + !d.e;
+  --a++[4] >> a % b;
+
+  a ?: 1 ?: c;
+  a * b ?: c;
+  a ?: b && c;
+  a && b ?: c;
+  a = b + c = d;
+  a = b ?: 1 + 2 = d;
+
+  a || b ? b : c ?: 1 ? d : 1;
+  a || b ? b : c ? 1.f : 1 ? d : 1;
+  a && b ~!;
+  a || b && 1 > b ?: 1 >>= 4;
+  a && b || 1 > b ? b : 1 + 1 >>= 4;
+
+  test(a = fn char* (Foo* foo, Dir dir) => dir == ROW ? &foo.bar()[1] : "");
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (expr_stmt
+          (binary_expr
+            (binary_expr
+              (ident_expr
+                (ident))
+              (binary_expr
+                (ident_expr
+                  (ident))
+                (ident_expr
+                  (ident))))
+            (unary_expr
+              (field_expr
+                (ident_expr
+                  (ident))
+                (access_ident
+                  (ident))))))
+        (expr_stmt
+          (binary_expr
+            (unary_expr
+              (subscript_expr
+                (update_expr
+                  (ident_expr
+                    (ident)))
+                (integer_literal)))
+            (binary_expr
+              (ident_expr
+                (ident))
+              (ident_expr
+                (ident)))))
+        (expr_stmt
+          (elvis_orelse_expr
+            (ident_expr
+              (ident))
+            (elvis_orelse_expr
+              (integer_literal)
+              (ident_expr
+                (ident)))))
+        (expr_stmt
+          (elvis_orelse_expr
+            (binary_expr
+              (ident_expr
+                (ident))
+              (ident_expr
+                (ident)))
+            (ident_expr
+              (ident))))
+        (expr_stmt
+          (binary_expr
+            (elvis_orelse_expr
+              (ident_expr
+                (ident))
+              (ident_expr
+                (ident)))
+            (ident_expr
+              (ident))))
+        (expr_stmt
+          (binary_expr
+            (ident_expr
+              (ident))
+            (elvis_orelse_expr
+              (ident_expr
+                (ident))
+              (ident_expr
+                (ident)))))
+        (expr_stmt
+          (assignment_expr
+            (ident_expr
+              (ident))
+            (assignment_expr
+              (binary_expr
+                (ident_expr
+                  (ident))
+                (ident_expr
+                  (ident)))
+              (ident_expr
+                (ident)))))
+        (expr_stmt
+          (assignment_expr
+            (ident_expr
+              (ident))
+            (assignment_expr
+              (binary_expr
+                (elvis_orelse_expr
+                  (ident_expr
+                    (ident))
+                  (integer_literal))
+                (integer_literal))
+              (ident_expr
+                (ident)))))
+        (expr_stmt
+          (ternary_expr
+            (binary_expr
+              (ident_expr
+                (ident))
+              (ident_expr
+                (ident)))
+            (ident_expr
+              (ident))
+            (ternary_expr
+              (elvis_orelse_expr
+                (ident_expr
+                  (ident))
+                (integer_literal))
+              (ident_expr
+                (ident))
+              (integer_literal))))
+        (expr_stmt
+          (ternary_expr
+            (binary_expr
+              (ident_expr
+                (ident))
+              (ident_expr
+                (ident)))
+            (ident_expr
+              (ident))
+            (ternary_expr
+              (ident_expr
+                (ident))
+              (real_literal)
+              (ternary_expr
+                (integer_literal)
+                (ident_expr
+                  (ident))
+                (integer_literal)))))
+        (expr_stmt
+          (optional_expr
+            (binary_expr
+              (ident_expr
+                (ident))
+              (ident_expr
+                (ident)))))
+        (expr_stmt
+          (assignment_expr
+            (binary_expr
+              (ident_expr
+                (ident))
+              (binary_expr
+                (ident_expr
+                  (ident))
+                (binary_expr
+                  (integer_literal)
+                  (elvis_orelse_expr
+                    (ident_expr
+                      (ident))
+                    (integer_literal)))))
+            (integer_literal)))
+        (expr_stmt
+          (assignment_expr
+            (ternary_expr
+              (binary_expr
+                (binary_expr
+                  (ident_expr
+                    (ident))
+                  (ident_expr
+                    (ident)))
+                (binary_expr
+                  (integer_literal)
+                  (ident_expr
+                    (ident))))
+              (ident_expr
+                (ident))
+              (binary_expr
+                (integer_literal)
+                (integer_literal)))
+            (integer_literal)))
+        (expr_stmt
+          (call_expr
+            (ident_expr
+              (ident))
+            (call_arg_list
+              (call_arg
+                (assignment_expr
+                  (ident_expr
+                    (ident))
+                  (lambda_expr
+                    (lambda_declaration
+                      (type
+                        (base_type_name)
+                        (type_suffix))
+                      (func_param_list
+                        (param
+                          (type
+                            (path_type_ident
+                              (type_ident))
+                            (type_suffix))
+                          (ident))
+                        (param
+                          (type
+                            (path_type_ident
+                              (type_ident)))
+                          (ident))))
+                    (implies_body
+                      (ternary_expr
+                        (binary_expr
+                          (ident_expr
+                            (ident))
+                          (ident_expr
+                            (const_ident)))
+                        (unary_expr
+                          (subscript_expr
+                            (call_expr
+                              (field_expr
+                                (ident_expr
+                                  (ident))
+                                (access_ident
+                                  (ident)))
+                              (call_arg_list))
+                            (integer_literal)))
+                        (string_literal)))))))))))))
+
+================================================================================
+Function calls
+================================================================================
+
+fn int test(int first, int second) {
+  return first + second;
+}
+
+fn void main() {
+  test(1, 2);
+  test(second: 1, first: 2, $third: 3);
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      return_type: (type
+        (base_type_name))
+      name: (ident))
+    (func_param_list
+      (param
+        type: (type
+          (base_type_name))
+        name: (ident))
+      (param
+        type: (type
+          (base_type_name))
+        name: (ident)))
+    body: (macro_func_body
+      (compound_stmt
+        (return_stmt
+          (binary_expr
+            left: (ident_expr
+              (ident))
+            right: (ident_expr
+              (ident)))))))
+  (func_definition
+    (func_header
+      return_type: (type
+        (base_type_name))
+      name: (ident))
+    (func_param_list)
+    body: (macro_func_body
+      (compound_stmt
+        (expr_stmt
+          (call_expr
+            function: (ident_expr
+              (ident))
+            arguments: (call_arg_list
+              (call_arg
+                (integer_literal))
+              (call_arg
+                (integer_literal)))))
+        (expr_stmt
+          (call_expr
+            function: (ident_expr
+              (ident))
+            arguments: (call_arg_list
+              (call_arg
+                name: (ident)
+                (integer_literal))
+              (call_arg
+                name: (ident)
+                (integer_literal))
+              (call_arg
+                name: (ct_ident)
+                (integer_literal)))))))))
+
+================================================================================
+Initializers
+================================================================================
+
+fn void main() {
+  int[4] z = { a, ...test() };
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (declaration_stmt
+          (declaration
+            (type
+              (base_type_name)
+              (type_suffix
+                (integer_literal)))
+            (ident)
+            (initializer_list
+              (initializer_element
+                (ident_expr
+                  (ident)))
+              (initializer_element
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list))))))))))
+
+================================================================================
+Named arguments
+================================================================================
+
+fn void main() {
+  @foo(arg1: 2u, #arg2: int, $arg3: 4.e2, $Arg4: Type{Type});
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (expr_stmt
+          (call_expr
+            (ident_expr
+              (at_ident))
+            (call_arg_list
+              (call_arg
+                (ident)
+                (integer_literal))
+              (call_arg
+                (hash_ident)
+                (type
+                  (base_type_name)))
+              (call_arg
+                (ct_ident)
+                (real_literal))
+              (call_arg
+                (ct_type_ident)
+                (type
+                  (generic_type_ident
+                    (path_type_ident
+                      (type_ident))
+                    (generic_arg_list
+                      (type
+                        (path_type_ident
+                          (type_ident))))))))))))))
+
+================================================================================
+Call inline attributes
+================================================================================
+
+fn void main() {
+  foo() @noinline;
+  foo() @inline (foo() @inline);
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (expr_stmt
+          (call_expr
+            (ident_expr
+              (ident))
+            (call_arg_list)
+            (call_inline_attributes
+              (at_ident))))
+        (expr_stmt
+          (call_expr
+            (call_expr
+              (ident_expr
+                (ident))
+              (call_arg_list)
+              (call_inline_attributes
+                (at_ident)))
+            (call_arg_list
+              (call_arg
+                (call_expr
+                  (ident_expr
+                    (ident))
+                  (call_arg_list)
+                  (call_inline_attributes
+                    (at_ident)))))))))))
+
+================================================================================
+Parenthesis
+================================================================================
+
+fn void main() {
+  ((((Foo))))(((foo))).(((@foo)))(((Bar{((((int))))})));
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (macro_func_body
+      (compound_stmt
+        (expr_stmt
+          (cast_expr
+            (paren_expr
+              (paren_expr
+                (paren_expr
+                  (type
+                    (path_type_ident
+                      (type_ident))))))
+            (call_expr
+              (field_expr
+                (paren_expr
+                  (paren_expr
+                    (paren_expr
+                      (ident_expr
+                        (ident)))))
+                (access_ident
+                  (at_ident)))
+              (call_arg_list
+                (call_arg
+                  (paren_expr
+                    (paren_expr
+                      (type
+                        (generic_type_ident
+                          (path_type_ident
+                            (type_ident))
+                          (generic_arg_list
+                            (paren_expr
+                              (paren_expr
+                                (paren_expr
+                                  (paren_expr
+                                    (type
+                                      (base_type_name))))))))))))))))))))

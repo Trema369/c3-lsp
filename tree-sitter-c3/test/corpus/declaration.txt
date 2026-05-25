@@ -1,0 +1,1257 @@
+================================================================================
+Module declarations
+================================================================================
+
+module program::main;
+
+import std::io;
+
+fn void main() {
+    io::printf("Hello, World!\n");
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_declaration
+    path: (path_ident
+      (module_resolution
+        (ident))
+      (ident)))
+  (import_declaration
+    (import_path
+      (path_ident
+        (module_resolution
+          (ident))
+        (ident))))
+  (func_definition
+    (func_header
+      return_type: (type
+        (base_type_name))
+      name: (ident))
+    (func_param_list)
+    body: (macro_func_body
+      (compound_stmt
+        (expr_stmt
+          (call_expr
+            function: (ident_expr
+              (module_resolution
+                (ident))
+              (ident))
+            arguments: (call_arg_list
+              (call_arg
+                (string_literal
+                  (string_content)
+                  (escape_sequence))))))))))
+
+================================================================================
+Import declarations
+================================================================================
+
+import std::io;
+import std::math;
+import std::data::json;
+import std::io, std::math @norecurse, std::data::json @norecurse;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (import_declaration
+    (import_path
+      (path_ident
+        (module_resolution
+          (ident))
+        (ident))))
+  (import_declaration
+    (import_path
+      (path_ident
+        (module_resolution
+          (ident))
+        (ident))))
+  (import_declaration
+    (import_path
+      (path_ident
+        (module_resolution
+          (ident))
+        (module_resolution
+          (ident))
+        (ident))))
+  (import_declaration
+    (import_path
+      (path_ident
+        (module_resolution
+          (ident))
+        (ident)))
+    (import_path
+      (path_ident
+        (module_resolution
+          (ident))
+        (ident))
+      (attributes
+        (attribute
+          (at_ident))))
+    (import_path
+      (path_ident
+        (module_resolution
+          (ident))
+        (module_resolution
+          (ident))
+        (ident))
+      (attributes
+        (attribute
+          (at_ident))))))
+
+================================================================================
+Alias declarations
+================================================================================
+
+alias CharPtr = char*;
+alias Numbers = int[10];
+typedef Foo = int;
+alias bar = foo;
+alias bar_var = foo_var;
+alias BarFoo = bar::Foo;
+alias Bar_foo = bar::Foo{int};
+alias FooFloat = foo_test::Foo{float, double};
+alias FooFloat2 = Foo{float, double};
+alias testFloat = foo_test::test{float, double};
+alias Callback = fn int(char* text, int value);
+alias PI = std::math::PI;
+alias isTest = Test.is_test;
+alias isTest2 = bar::Test[].is_test;
+alias @isTest = Test.@is_test;
+alias @isTest = bar::Test.@is_test;
+alias @isTest = bar::Test{int}[].@is_test;
+alias GOO = bar::GOO{int};
+alias goo = bar::Foo{int}.method;
+alias @intHello = foo::@hello{int};
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (alias_declaration
+    (type_ident)
+    (type
+      (base_type_name)
+      (type_suffix)))
+  (alias_declaration
+    (type_ident)
+    (type
+      (base_type_name)
+      (type_suffix
+        (integer_literal))))
+  (typedef_declaration
+    (type_ident)
+    (type
+      (base_type_name)))
+  (alias_declaration
+    (ident)
+    (ident_expr
+      (ident)))
+  (alias_declaration
+    (ident)
+    (ident_expr
+      (ident)))
+  (alias_declaration
+    (type_ident)
+    (type
+      (path_type_ident
+        (module_resolution
+          (ident))
+        (type_ident))))
+  (alias_declaration
+    (type_ident)
+    (type
+      (generic_type_ident
+        (path_type_ident
+          (module_resolution
+            (ident))
+          (type_ident))
+        (generic_arg_list
+          (type
+            (base_type_name))))))
+  (alias_declaration
+    (type_ident)
+    (type
+      (generic_type_ident
+        (path_type_ident
+          (module_resolution
+            (ident))
+          (type_ident))
+        (generic_arg_list
+          (type
+            (base_type_name))
+          (type
+            (base_type_name))))))
+  (alias_declaration
+    (type_ident)
+    (type
+      (generic_type_ident
+        (path_type_ident
+          (type_ident))
+        (generic_arg_list
+          (type
+            (base_type_name))
+          (type
+            (base_type_name))))))
+  (alias_declaration
+    (ident)
+    (trailing_generic_expr
+      (ident_expr
+        (module_resolution
+          (ident))
+        (ident))
+      (generic_arg_list
+        (type
+          (base_type_name))
+        (type
+          (base_type_name)))))
+  (alias_declaration
+    (type_ident)
+    (func_signature
+      (type
+        (base_type_name))
+      (func_param_list
+        (param
+          (type
+            (base_type_name)
+            (type_suffix))
+          (ident))
+        (param
+          (type
+            (base_type_name))
+          (ident)))))
+  (alias_declaration
+    (const_ident)
+    (ident_expr
+      (module_resolution
+        (ident))
+      (module_resolution
+        (ident))
+      (const_ident)))
+  (alias_declaration
+    (ident)
+    (field_expr
+      (type
+        (path_type_ident
+          (type_ident)))
+      (access_ident
+        (ident))))
+  (alias_declaration
+    (ident)
+    (field_expr
+      (type
+        (path_type_ident
+          (module_resolution
+            (ident))
+          (type_ident))
+        (type_suffix))
+      (access_ident
+        (ident))))
+  (alias_declaration
+    (at_ident)
+    (field_expr
+      (type
+        (path_type_ident
+          (type_ident)))
+      (access_ident
+        (at_ident))))
+  (alias_declaration
+    (at_ident)
+    (field_expr
+      (type
+        (path_type_ident
+          (module_resolution
+            (ident))
+          (type_ident)))
+      (access_ident
+        (at_ident))))
+  (alias_declaration
+    (at_ident)
+    (field_expr
+      (type
+        (generic_type_ident
+          (path_type_ident
+            (module_resolution
+              (ident))
+            (type_ident))
+          (generic_arg_list
+            (type
+              (base_type_name))))
+        (type_suffix))
+      (access_ident
+        (at_ident))))
+  (alias_declaration
+    (const_ident)
+    (trailing_generic_expr
+      (ident_expr
+        (module_resolution
+          (ident))
+        (const_ident))
+      (generic_arg_list
+        (type
+          (base_type_name)))))
+  (alias_declaration
+    (ident)
+    (field_expr
+      (type
+        (generic_type_ident
+          (path_type_ident
+            (module_resolution
+              (ident))
+            (type_ident))
+          (generic_arg_list
+            (type
+              (base_type_name)))))
+      (access_ident
+        (ident))))
+  (alias_declaration
+    (at_ident)
+    (trailing_generic_expr
+      (ident_expr
+        (module_resolution
+          (ident))
+        (at_ident))
+      (generic_arg_list
+        (type
+          (base_type_name))))))
+
+================================================================================
+Function declarations
+================================================================================
+
+fn int? main(int argc, char** argv) {
+    int ret = 0;
+    return ret;
+}
+
+fn int add(int x, int y) @inline {
+    return x + y;
+}
+
+fn int multiply(int x, int y = 1) {
+    return x * y;
+}
+
+fn void with_attr_path() abc::@Foo {}
+
+fn int square_short(int x) => x * x;
+
+fn int short_name(String name) => name == "is_short";
+
+fn int quick(int speed) => speed >= 120;
+
+extern fn void printf(char* str, ...);
+
+extern fn int sum(int... ints);
+
+macro asdf($theta, double[2], $Type = double[2]**?) => $Type.nameof;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list
+      (param
+        (type
+          (base_type_name))
+        (ident))
+      (param
+        (type
+          (base_type_name)
+          (type_suffix)
+          (type_suffix))
+        (ident)))
+    (macro_func_body
+      (compound_stmt
+        (declaration_stmt
+          (declaration
+            (type
+              (base_type_name))
+            (ident)
+            (integer_literal)))
+        (return_stmt
+          (ident_expr
+            (ident))))))
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list
+      (param
+        (type
+          (base_type_name))
+        (ident))
+      (param
+        (type
+          (base_type_name))
+        (ident)))
+    (attributes
+      (attribute
+        (at_ident)))
+    (macro_func_body
+      (compound_stmt
+        (return_stmt
+          (binary_expr
+            (ident_expr
+              (ident))
+            (ident_expr
+              (ident)))))))
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list
+      (param
+        (type
+          (base_type_name))
+        (ident))
+      (param
+        (type
+          (base_type_name))
+        (ident)
+        (param_default
+          (integer_literal))))
+    (macro_func_body
+      (compound_stmt
+        (return_stmt
+          (binary_expr
+            (ident_expr
+              (ident))
+            (ident_expr
+              (ident)))))))
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (attributes
+      (attribute
+        (path_at_type_ident
+          (module_resolution
+            (ident))
+          (at_type_ident))))
+    (macro_func_body
+      (compound_stmt)))
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list
+      (param
+        (type
+          (base_type_name))
+        (ident)))
+    (macro_func_body
+      (implies_body
+        (binary_expr
+          (ident_expr
+            (ident))
+          (ident_expr
+            (ident))))))
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list
+      (param
+        (type
+          (path_type_ident
+            (type_ident)))
+        (ident)))
+    (macro_func_body
+      (implies_body
+        (binary_expr
+          (ident_expr
+            (ident))
+          (string_literal
+            (string_content))))))
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list
+      (param
+        (type
+          (base_type_name))
+        (ident)))
+    (macro_func_body
+      (implies_body
+        (binary_expr
+          (ident_expr
+            (ident))
+          (integer_literal)))))
+  (global_declaration
+    (func_declaration
+      (func_header
+        (type
+          (base_type_name))
+        (ident))
+      (func_param_list
+        (param
+          (type
+            (base_type_name)
+            (type_suffix))
+          (ident))
+        (param))))
+  (global_declaration
+    (func_declaration
+      (func_header
+        (type
+          (base_type_name))
+        (ident))
+      (func_param_list
+        (param
+          (type
+            (base_type_name))
+          (ident)))))
+  (macro_declaration
+    (macro_header
+      (ident))
+    (macro_param_list
+      (param
+        (ct_ident))
+      (param
+        (type
+          (base_type_name)
+          (type_suffix
+            (integer_literal))))
+      (param
+        (type
+          (ct_type_ident))
+        (param_default
+          (type
+            (base_type_name)
+            (type_suffix
+              (integer_literal))
+            (type_suffix)
+            (type_suffix)))))
+    (macro_func_body
+      (implies_body
+        (field_expr
+          (type
+            (ct_type_ident))
+          (access_ident
+            (ident)))))))
+
+================================================================================
+Struct declarations
+================================================================================
+
+struct Person {
+    char age;
+    char* name;
+}
+
+struct Player @packed {
+    inline Person p;
+    char* name;
+    uint health @aligned;
+}
+
+fn bool Player.is_alive(Player* p) {
+    return p.health > 0;
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (struct_declaration
+    (type_ident)
+    (struct_body
+      (struct_member_declaration
+        (type
+          (base_type_name))
+        (identifier_list
+          (ident)))
+      (struct_member_declaration
+        (type
+          (base_type_name)
+          (type_suffix))
+        (identifier_list
+          (ident)))))
+  (struct_declaration
+    (type_ident)
+    (attributes
+      (attribute
+        (at_ident)))
+    (struct_body
+      (struct_member_declaration
+        (type
+          (path_type_ident
+            (type_ident)))
+        (ident))
+      (struct_member_declaration
+        (type
+          (base_type_name)
+          (type_suffix))
+        (identifier_list
+          (ident)))
+      (struct_member_declaration
+        (type
+          (base_type_name))
+        (identifier_list
+          (ident))
+        (attributes
+          (attribute
+            (at_ident))))))
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (type
+        (path_type_ident
+          (type_ident)))
+      (ident))
+    (func_param_list
+      (param
+        (type
+          (path_type_ident
+            (type_ident))
+          (type_suffix))
+        (ident)))
+    (macro_func_body
+      (compound_stmt
+        (return_stmt
+          (binary_expr
+            (field_expr
+              (ident_expr
+                (ident))
+              (access_ident
+                (ident)))
+            (integer_literal)))))))
+
+================================================================================
+Bitstruct declarations
+================================================================================
+
+bitstruct ShortBE : short @bigendian
+{
+    short val : 0..15;
+}
+
+bitstruct ByteStruct : char
+{
+    bool start : 0;
+    bool center : 1..6;
+    bool end : 7;
+}
+
+bitstruct Foo : int {
+  bool a : foo() @inline;
+  bool b : (foo()) @tag("foo", 0);
+  int  c : foo() @inline .. foo() @inline + 1;
+  int  d : foo() @inline .. (foo()) @tag("foo", 0);
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (bitstruct_declaration
+    (type_ident)
+    (type
+      (base_type_name))
+    (attributes
+      (attribute
+        (at_ident)))
+    (bitstruct_body
+      (bitstruct_member_declaration
+        (base_type_name)
+        (ident)
+        (integer_literal)
+        (integer_literal))))
+  (bitstruct_declaration
+    (type_ident)
+    (type
+      (base_type_name))
+    (bitstruct_body
+      (bitstruct_member_declaration
+        (base_type_name)
+        (ident)
+        (integer_literal))
+      (bitstruct_member_declaration
+        (base_type_name)
+        (ident)
+        (integer_literal)
+        (integer_literal))
+      (bitstruct_member_declaration
+        (base_type_name)
+        (ident)
+        (integer_literal))))
+  (bitstruct_declaration
+    (type_ident)
+    (type
+      (base_type_name))
+    (bitstruct_body
+      (bitstruct_member_declaration
+        (base_type_name)
+        (ident)
+        (call_expr
+          (ident_expr
+            (ident))
+          (call_arg_list)
+          (call_inline_attributes
+            (at_ident))))
+      (bitstruct_member_declaration
+        (base_type_name)
+        (ident)
+        (paren_expr
+          (call_expr
+            (ident_expr
+              (ident))
+            (call_arg_list)))
+        (attributes
+          (attribute
+            (at_ident)
+            (attribute_arg_list
+              (attribute_arg
+                (string_literal
+                  (string_content)))
+              (attribute_arg
+                (integer_literal))))))
+      (bitstruct_member_declaration
+        (base_type_name)
+        (ident)
+        (call_expr
+          (ident_expr
+            (ident))
+          (call_arg_list)
+          (call_inline_attributes
+            (at_ident)))
+        (binary_expr
+          (call_expr
+            (ident_expr
+              (ident))
+            (call_arg_list)
+            (call_inline_attributes
+              (at_ident)))
+          (integer_literal)))
+      (bitstruct_member_declaration
+        (base_type_name)
+        (ident)
+        (call_expr
+          (ident_expr
+            (ident))
+          (call_arg_list)
+          (call_inline_attributes
+            (at_ident)))
+        (paren_expr
+          (call_expr
+            (ident_expr
+              (ident))
+            (call_arg_list)))
+        (attributes
+          (attribute
+            (at_ident)
+            (attribute_arg_list
+              (attribute_arg
+                (string_literal
+                  (string_content)))
+              (attribute_arg
+                (integer_literal)))))))))
+
+================================================================================
+Union declarations
+================================================================================
+
+union Set {
+    int x;
+    float y;
+    struct p {
+        int z;
+        float a;
+    }
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (struct_declaration
+    (type_ident)
+    (struct_body
+      (struct_member_declaration
+        (type
+          (base_type_name))
+        (identifier_list
+          (ident)))
+      (struct_member_declaration
+        (type
+          (base_type_name))
+        (identifier_list
+          (ident)))
+      (struct_member_declaration
+        (ident)
+        (struct_body
+          (struct_member_declaration
+            (type
+              (base_type_name))
+            (identifier_list
+              (ident)))
+          (struct_member_declaration
+            (type
+              (base_type_name))
+            (identifier_list
+              (ident))))))))
+
+================================================================================
+Enum declarations
+================================================================================
+
+enum OptionTag @packed {
+    SOME,
+    NONE,
+}
+
+enum State : int {
+    PENDING,
+    RUNNING,
+    TERMINATED,
+}
+
+enum TokenKind @packed @opaque {
+    KEYWORD,
+    OPERATOR,
+    FUNCTION,
+}
+
+constdef Abc : inline int
+{
+  ABC = 1,
+  DEF,
+}
+
+enum Foo : int (inline String name, int y, int z)
+{
+  ABC { "Hello", 1, 2 },
+  DEF { "World", 2, 3 },
+}
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (enum_declaration
+    (type_ident)
+    (attributes
+      (attribute
+        (at_ident)))
+    (enum_body
+      (enum_constant
+        (const_ident))
+      (enum_constant
+        (const_ident))))
+  (enum_declaration
+    (type_ident)
+    (enum_spec
+      (type
+        (base_type_name)))
+    (enum_body
+      (enum_constant
+        (const_ident))
+      (enum_constant
+        (const_ident))
+      (enum_constant
+        (const_ident))))
+  (enum_declaration
+    (type_ident)
+    (attributes
+      (attribute
+        (at_ident))
+      (attribute
+        (at_ident)))
+    (enum_body
+      (enum_constant
+        (const_ident))
+      (enum_constant
+        (const_ident))
+      (enum_constant
+        (const_ident))))
+  (constdef_declaration
+    (type_ident)
+    (enum_spec
+      (type
+        (base_type_name)))
+    (enum_body
+      (enum_constant
+        (const_ident)
+        (integer_literal))
+      (enum_constant
+        (const_ident))))
+  (enum_declaration
+    (type_ident)
+    (enum_spec
+      (type
+        (base_type_name))
+      (enum_param_list
+        (enum_param
+          (type
+            (path_type_ident
+              (type_ident)))
+          (ident))
+        (enum_param
+          (type
+            (base_type_name))
+          (ident))
+        (enum_param
+          (type
+            (base_type_name))
+          (ident))))
+    (enum_body
+      (enum_constant
+        (const_ident)
+        (initializer_list
+          (initializer_element
+            (string_literal
+              (string_content)))
+          (initializer_element
+            (integer_literal))
+          (initializer_element
+            (integer_literal))))
+      (enum_constant
+        (const_ident)
+        (initializer_list
+          (initializer_element
+            (string_literal
+              (string_content)))
+          (initializer_element
+            (integer_literal))
+          (initializer_element
+            (integer_literal)))))))
+
+================================================================================
+Error declarations
+================================================================================
+
+faultdef FILE_NOT_FOUND, FILE_NOT_READABLE;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (faultdef_declaration
+    (const_ident)
+    (const_ident)))
+
+================================================================================
+Global declarations
+================================================================================
+
+int a;
+int a, b;
+extern int a;
+extern int a = 4;
+extern int a, b;
+mymodule::Type global @private = 4;
+const UNTYPED @deprecated("") = 4;
+const mymodule::Type{int}* CONST = CONST;
+
+extern fn void foo(void);
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (identifier_list
+        (ident)
+        (ident))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (integer_literal)))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (identifier_list
+        (ident)
+        (ident))))
+  (global_declaration
+    (declaration
+      (type
+        (path_type_ident
+          (module_resolution
+            (ident))
+          (type_ident)))
+      (ident)
+      (attributes
+        (attribute
+          (at_ident)))
+      (integer_literal)))
+  (global_declaration
+    (const_declaration
+      (const_ident)
+      (attributes
+        (attribute
+          (at_ident)
+          (attribute_arg_list
+            (attribute_arg
+              (string_literal)))))
+      (integer_literal)))
+  (global_declaration
+    (const_declaration
+      (type
+        (generic_type_ident
+          (path_type_ident
+            (module_resolution
+              (ident))
+            (type_ident))
+          (generic_arg_list
+            (type
+              (base_type_name))))
+        (type_suffix))
+      (const_ident)
+      (ident_expr
+        (const_ident))))
+  (global_declaration
+    (func_declaration
+      (func_header
+        (type
+          (base_type_name))
+        (ident))
+      (func_param_list
+        (param
+          (type
+            (base_type_name)))))))
+
+================================================================================
+Byte literals
+================================================================================
+
+char[*] foo = x"       00
+aa  bbcc   ddee  ff";
+char[*] foo = x'd  ead b
+eef';
+char[*] foo = x`ff 00 aa 00`;
+char[*] foo = b64"   SG  VsbG8gV29ybGQ=";
+char[*] foo = b64'   SG  VsbG8gV29ybGQ=';
+char[*] foo = b64`   SG  VsbG8g
+
+V29ybGQ=`;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (bytes_expr
+        (bytes_literal))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (bytes_expr
+        (bytes_literal))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (bytes_expr
+        (bytes_literal))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (bytes_expr
+        (bytes_literal))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (bytes_expr
+        (bytes_literal))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name)
+        (type_suffix))
+      (ident)
+      (bytes_expr
+        (bytes_literal)))))
+
+================================================================================
+Generic declarations
+================================================================================
+
+module foo <Type, CONST>;
+
+const MYCONST <Type, CONST> = CONST;
+alias MYCONST2 <Type> = MYCONST{Type, 2};
+
+int myglobal <Type, CONST> = CONST;
+alias myglobal2 <Type> = myglobal{Type, 2};
+
+typedef MyType <Type, Const> = Type;
+alias MyType <Type, Const> = Type;
+
+struct Foo <Type, Const> {}
+bitstruct Foo : ulong <Type, Const> {}
+enum Foo : ulong <Type, Const> {}
+interface Foo <Type, Const> {}
+
+fn void main() <Type, CONST> {}
+macro void foo() <Type, CONST> {}
+extern fn void foo() <Type, CONST>;
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (module_declaration
+    (path_ident
+      (ident))
+    (generic_param_list
+      (type_ident)
+      (const_ident)))
+  (global_declaration
+    (const_declaration
+      (const_ident)
+      (generic_param_list
+        (type_ident)
+        (const_ident))
+      (ident_expr
+        (const_ident))))
+  (alias_declaration
+    (const_ident)
+    (generic_param_list
+      (type_ident))
+    (trailing_generic_expr
+      (ident_expr
+        (const_ident))
+      (generic_arg_list
+        (type
+          (path_type_ident
+            (type_ident)))
+        (integer_literal))))
+  (global_declaration
+    (declaration
+      (type
+        (base_type_name))
+      (ident)
+      (generic_param_list
+        (type_ident)
+        (const_ident))
+      (ident_expr
+        (const_ident))))
+  (alias_declaration
+    (ident)
+    (generic_param_list
+      (type_ident))
+    (trailing_generic_expr
+      (ident_expr
+        (ident))
+      (generic_arg_list
+        (type
+          (path_type_ident
+            (type_ident)))
+        (integer_literal))))
+  (typedef_declaration
+    (type_ident)
+    (generic_param_list
+      (type_ident)
+      (type_ident))
+    (type
+      (path_type_ident
+        (type_ident))))
+  (alias_declaration
+    (type_ident)
+    (generic_param_list
+      (type_ident)
+      (type_ident))
+    (type
+      (path_type_ident
+        (type_ident))))
+  (struct_declaration
+    (type_ident)
+    (generic_param_list
+      (type_ident)
+      (type_ident))
+    (struct_body))
+  (bitstruct_declaration
+    (type_ident)
+    (type
+      (base_type_name))
+    (generic_param_list
+      (type_ident)
+      (type_ident))
+    (bitstruct_body))
+  (enum_declaration
+    (type_ident)
+    (enum_spec
+      (type
+        (base_type_name)))
+    (generic_param_list
+      (type_ident)
+      (type_ident))
+    (enum_body))
+  (interface_declaration
+    (type_ident)
+    (generic_param_list
+      (type_ident)
+      (type_ident))
+    (interface_body))
+  (func_definition
+    (func_header
+      (type
+        (base_type_name))
+      (ident))
+    (func_param_list)
+    (generic_param_list
+      (type_ident)
+      (const_ident))
+    (macro_func_body
+      (compound_stmt)))
+  (macro_declaration
+    (macro_header
+      (type
+        (base_type_name))
+      (ident))
+    (macro_param_list)
+    (generic_param_list
+      (type_ident)
+      (const_ident))
+    (macro_func_body
+      (compound_stmt)))
+  (global_declaration
+    (func_declaration
+      (func_header
+        (type
+          (base_type_name))
+        (ident))
+      (func_param_list)
+      (generic_param_list
+        (type_ident)
+        (const_ident)))))
