@@ -6,20 +6,30 @@ import (
 	"io"
 	"log"
 	"os"
+	"sync"
+	"time"
 
 	"test/lsp/analysis"
 	"test/lsp/lsp"
 	"test/lsp/rpc"
 )
 
+var writeMu sync.Mutex
+var (
+	diagnosticTimers = make(map[string]*time.Timer)
+	timersMu         sync.Mutex
+)
+
 func main() {
-	logger := getLogger("/home/trema/Projects/learning/golang/lsp/log.txt")
+	logger := getLogger("/data/data/com.termux/files/home/projects/c3-lsp/log.txt")
+
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Buffer(make([]byte, 1024*1024), 1024*1024)
 	scanner.Split(rpc.Split)
 
 	state := analysis.NewState()
 	writer := os.Stdout
+
 	for scanner.Scan() {
 		msg := scanner.Bytes()
 		method, contents, err := rpc.DecodeMessage(msg)
@@ -32,22 +42,21 @@ func main() {
 }
 
 func handleMessage(logger *log.Logger, writer io.Writer, state *analysis.State, method string, contents []byte) {
-	logger.Printf("we recieved msg with: %s", method)
+	logger.Printf("we received msg with: %s", method)
 	switch method {
 	case "initialize":
 		var request lsp.InitializeRequest
 		if err := json.Unmarshal(contents, &request); err != nil {
 			logger.Printf("Hey we could not parse this: %s", err)
 		}
-
 		logger.Printf("Connected to : %s %s",
 			request.Params.ClientInfo.Name,
 			request.Params.ClientInfo.Version)
 
 		msg := lsp.NewInitalizeResponse(request.ID)
 		writeResponse(writer, msg)
-
 		logger.Print("send the reply")
+
 	case "textDocument/didOpen":
 		var request lsp.DidOpenTextDocumentNotification
 		if err := json.Unmarshal(contents, &request); err != nil {
@@ -55,6 +64,8 @@ func handleMessage(logger *log.Logger, writer io.Writer, state *analysis.State, 
 		}
 		logger.Printf("Opened: %s", request.Params.TextDocument.URI)
 		state.OpenDocument(request.Params.TextDocument.URI, request.Params.TextDocument.Text)
+
+		go triggerDiagnostics(writer, logger, state, request.Params.TextDocument.URI)
 
 	case "textDocument/didChange":
 		var request lsp.TextDocumentDidChangeNotification
@@ -65,6 +76,8 @@ func handleMessage(logger *log.Logger, writer io.Writer, state *analysis.State, 
 		for _, change := range request.Params.ContentChanges {
 			state.UpdateDocument(request.Params.TextDocument.URI, change.Text)
 		}
+
+		scheduleDiagnostics(writer, logger, state, request.Params.TextDocument.URI)
 
 	case "textDocument/hover":
 		var request lsp.HoverRequest
@@ -85,7 +98,46 @@ func handleMessage(logger *log.Logger, writer io.Writer, state *analysis.State, 
 	}
 }
 
+func scheduleDiagnostics(writer io.Writer, logger *log.Logger, state *analysis.State, uri string) {
+	timersMu.Lock()
+	defer timersMu.Unlock()
+
+	if timer, exists := diagnosticTimers[uri]; exists {
+		timer.Stop()
+	}
+	diagnosticTimers[uri] = time.AfterFunc(300*time.Millisecond, func() {
+		triggerDiagnostics(writer, logger, state, uri)
+	})
+}
+
+func triggerDiagnostics(writer io.Writer, logger *log.Logger, state *analysis.State, uri string) {
+	logger.Printf("Asynchronous compiler compilation check started for: %s", uri)
+
+	diagnostics, err := state.Analyze(uri)
+	if err != nil {
+		logger.Printf("Analysis backend failed parsing file %s: %s", uri, err)
+		return
+	}
+
+	notification := lsp.PublishDiagnosticsNotification{
+		Notification: lsp.Notification{
+			RPC:    "2.0",
+			Method: "textDocument/publishDiagnostics",
+		},
+		Params: lsp.PublishDiagnosticsParams{
+			URI:         uri,
+			Diagnostics: diagnostics,
+		},
+	}
+
+	writeResponse(writer, notification)
+	logger.Printf("Dispatched diagnostics notification back to client for: %s", uri)
+}
+
 func writeResponse(writer io.Writer, msg any) {
+	writeMu.Lock()
+	defer writeMu.Unlock()
+
 	reply := rpc.EncodeMessage(msg)
 	writer.Write([]byte(reply))
 }

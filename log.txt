@@ -1,16 +1,82 @@
-[test/lsp]2026/05/25 13:44:17 main.go:33: we recieved msg with: initialize
-[test/lsp]2026/05/25 13:44:17 main.go:41: Connected to : Neovim 0.12.2+v0.12.2
-[test/lsp]2026/05/25 13:44:17 main.go:51: send the reply
-[test/lsp]2026/05/25 13:44:17 main.go:33: we recieved msg with: initialized
-[test/lsp]2026/05/25 13:44:17 main.go:33: we recieved msg with: textDocument/didOpen
-[test/lsp]2026/05/25 13:44:17 main.go:57: Opened: file:///home/trema/.config/nvim/README.md
-[test/lsp]2026/05/25 13:44:41 main.go:33: we recieved msg with: textDocument/hover
-[test/lsp]2026/05/25 13:45:06 main.go:33: we recieved msg with: shutdown
-[test/lsp]2026/05/25 14:06:09 main.go:35: we recieved msg with: initialize
-[test/lsp]2026/05/25 14:06:09 main.go:43: Connected to : Neovim 0.12.2+v0.12.2
-[test/lsp]2026/05/25 14:06:09 main.go:50: send the reply
-[test/lsp]2026/05/25 14:06:09 main.go:35: we recieved msg with: initialized
-[test/lsp]2026/05/25 14:06:09 main.go:35: we recieved msg with: textDocument/didOpen
-[test/lsp]2026/05/25 14:06:09 main.go:56: Opened: file:///home/trema/.config/nvim/README.md
-[test/lsp]2026/05/25 14:06:14 main.go:35: we recieved msg with: textDocument/hover
-[test/lsp]2026/05/25 14:17:25 main.go:35: we recieved msg with: shutdown
+[test/lsp]2026/05/25 16:13:51 main.go:45: we received msg with: initialize
+[test/lsp]2026/05/25 16:13:51 main.go:52: Connected to : Neovim 0.12.2
+[test/lsp]2026/05/25 16:13:51 main.go:58: send the reply
+[test/lsp]2026/05/25 16:13:51 main.go:45: we received msg with: initialized
+[test/lsp]2026/05/25 16:13:51 main.go:45: we received msg with: textDocument/didOpen
+[test/lsp]2026/05/25 16:13:51 main.go:65: Opened: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:13:51 main.go:114: Asynchronous compiler compilation check started for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:13:51 main.go:134: Dispatched diagnostics notification back to client for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:13:54 main.go:45: we received msg with: textDocument/didSave
+[test/lsp]2026/05/25 16:13:54 main.go:45: we received msg with: shutdown
+[test/lsp]2026/05/25 16:14:04 main.go:45: we received msg with: initialize
+[test/lsp]2026/05/25 16:14:04 main.go:52: Connected to : Neovim 0.12.2
+[test/lsp]2026/05/25 16:14:04 main.go:58: send the reply
+[test/lsp]2026/05/25 16:14:04 main.go:45: we received msg with: initialized
+[test/lsp]2026/05/25 16:14:04 main.go:45: we received msg with: textDocument/didOpen
+[test/lsp]2026/05/25 16:14:04 main.go:65: Opened: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:04 main.go:114: Asynchronous compiler compilation check started for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:04 main.go:134: Dispatched diagnostics notification back to client for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:06 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:06 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:06 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:06 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:06 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:06 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:06 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:06 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:06 main.go:114: Asynchronous compiler compilation check started for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:06 main.go:134: Dispatched diagnostics notification back to client for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:07 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:07 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:07 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:07 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:07 main.go:114: Asynchronous compiler compilation check started for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:07 main.go:134: Dispatched diagnostics notification back to client for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:08 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:08 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:08 main.go:114: Asynchronous compiler compilation check started for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:08 main.go:134: Dispatched diagnostics notification back to client for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:09 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:09 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:09 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:09 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:09 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:09 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:09 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:09 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:10 main.go:114: Asynchronous compiler compilation check started for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:10 main.go:134: Dispatched diagnostics notification back to client for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:10 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:10 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:10 main.go:114: Asynchronous compiler compilation check started for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:10 main.go:134: Dispatched diagnostics notification back to client for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:10 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:10 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:10 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:10 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:11 main.go:114: Asynchronous compiler compilation check started for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:11 main.go:134: Dispatched diagnostics notification back to client for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:12 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:12 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:12 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:12 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:12 main.go:114: Asynchronous compiler compilation check started for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:12 main.go:134: Dispatched diagnostics notification back to client for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:20 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:20 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:20 main.go:114: Asynchronous compiler compilation check started for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:20 main.go:134: Dispatched diagnostics notification back to client for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:21 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:21 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:22 main.go:114: Asynchronous compiler compilation check started for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:22 main.go:134: Dispatched diagnostics notification back to client for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:22 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:22 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:22 main.go:114: Asynchronous compiler compilation check started for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:22 main.go:134: Dispatched diagnostics notification back to client for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:26 main.go:45: we received msg with: textDocument/didChange
+[test/lsp]2026/05/25 16:14:26 main.go:75: Changed: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:27 main.go:114: Asynchronous compiler compilation check started for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:27 main.go:134: Dispatched diagnostics notification back to client for: file:///data/data/com.termux/files/home/projects/learningC3/hello.c3
+[test/lsp]2026/05/25 16:14:30 main.go:45: we received msg with: textDocument/didSave
+[test/lsp]2026/05/25 16:14:30 main.go:45: we received msg with: shutdown
