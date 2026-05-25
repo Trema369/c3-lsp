@@ -1,0 +1,15 @@
+[test/lsp]2026/05/24 22:13:24 main.go:13: hey i started
+[test/lsp]2026/05/24 22:13:24 main.go:29: we recieved msg with: initialize
+[test/lsp]2026/05/24 22:13:29 main.go:13: hey i started
+[test/lsp]2026/05/24 22:13:29 main.go:29: we recieved msg with: initialize
+[test/lsp]2026/05/24 22:14:38 main.go:13: hey i started
+[test/lsp]2026/05/24 22:14:38 main.go:29: we recieved msg with: initialize
+[test/lsp]2026/05/24 22:24:39 main.go:15: hey i started
+[test/lsp]2026/05/24 22:24:39 main.go:31: we recieved msg with: initialize
+[test/lsp]2026/05/24 22:24:39 main.go:38: Connected to : Neovim 0.12.2+v0.12.2
+[test/lsp]2026/05/24 22:24:48 main.go:15: hey i started
+[test/lsp]2026/05/24 22:24:48 main.go:31: we recieved msg with: initialize
+[test/lsp]2026/05/24 22:24:48 main.go:38: Connected to : Neovim 0.12.2+v0.12.2
+[test/lsp]2026/05/24 22:28:40 main.go:15: hey i started
+[test/lsp]2026/05/24 22:28:40 main.go:31: we recieved msg with: initialize
+[test/lsp]2026/05/24 22:28:40 main.go:38: Connected to : Neovim 0.12.2+v0.12.2
