@@ -23,11 +23,15 @@ type InitializeResult struct {
 	Capabilities ServerCapabilities `json:"capabilities"`
 	ServerInfo   ServerInfo         `json:"serverInfo"`
 }
+type SaveOptions struct {
+	IncludeText bool `json:"includeText"`
+}
 
 type ServerCapabilities struct {
 	TextDocumentSync   int               `json:"textDocumentSync"`
 	HoverProvider      bool              `json:"hoverProvider"`
 	CompletionProvider CompletionOptions `json:"completionProvider"`
+	SaveOptions        *SaveOptions      `json:"save,omitempty"`
 }
 type CompletionOptions struct {
 	TriggerCharacters []string `json:"triggerCharacters,omitempty"`
@@ -50,6 +54,7 @@ func NewInitalizeResponse(id int) InitializeResponse {
 				CompletionProvider: CompletionOptions{
 					TriggerCharacters: []string{".", "::"},
 				},
+				SaveOptions: &SaveOptions{IncludeText: false},
 			},
 			ServerInfo: ServerInfo{
 				Name:    "test/lsp",

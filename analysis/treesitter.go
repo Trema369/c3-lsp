@@ -86,3 +86,73 @@ func NodeAtPosition(tree *sitter.Tree, pos lsp.Position) *sitter.Node {
 	}
 	return root.DescendantForPointRange(point, point)
 }
+
+// inferTypeFromTree uses the AST to find the declared type of a variable
+func inferTypeFromTree(doc *Document, varName string) string {
+	if doc.Tree == nil {
+		return ""
+	}
+	src := []byte(doc.Text)
+	return searchForVarType(doc.Tree.RootNode(), src, varName)
+}
+
+func searchForVarType(node *sitter.Node, src []byte, varName string) string {
+	if node.Kind() == "declaration" {
+		// declaration -> type, ident
+		var typeName, name string
+		for i := range node.ChildCount() {
+			child := node.Child(i)
+			if child == nil {
+				continue
+			}
+			switch child.Kind() {
+			case "type":
+				// get the innermost type_ident or base_type_name
+				typeName = extractTypeName(child, src)
+			case "ident":
+				name = string(src[child.StartByte():child.EndByte()])
+			}
+		}
+		if name == varName && typeName != "" {
+			return typeName
+		}
+	}
+
+	for i := range node.ChildCount() {
+		child := node.Child(i)
+		if child != nil {
+			if result := searchForVarType(child, src, varName); result != "" {
+				return result
+			}
+		}
+	}
+	return ""
+}
+
+func extractTypeName(typeNode *sitter.Node, src []byte) string {
+	// type -> path_type_ident -> type_ident
+	// type -> base_type_name -> int/float/etc
+	for i := range typeNode.ChildCount() {
+		child := typeNode.Child(i)
+		if child == nil {
+			continue
+		}
+		switch child.Kind() {
+		case "path_type_ident":
+			ti := findChildNode(child, "type_ident")
+			if ti != nil {
+				return string(src[ti.StartByte():ti.EndByte()])
+			}
+		case "base_type_name":
+			if child.ChildCount() > 0 {
+				inner := child.Child(0)
+				if inner != nil {
+					return string(src[inner.StartByte():inner.EndByte()])
+				}
+			}
+		case "type_ident":
+			return string(src[child.StartByte():child.EndByte()])
+		}
+	}
+	return ""
+}

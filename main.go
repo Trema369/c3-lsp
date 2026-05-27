@@ -6,6 +6,8 @@ import (
 	"io"
 	"log"
 	"os"
+	"path/filepath"
+	"strings"
 	"sync"
 	"time"
 
@@ -74,11 +76,25 @@ func handleMessage(logger *log.Logger, writer io.Writer, state *analysis.State, 
 		if err := json.Unmarshal(contents, &request); err != nil {
 			logger.Printf("textDocument/didOpen: %s", err)
 		}
-		logger.Printf("Opened: %s", request.Params.TextDocument.URI)
-		state.OpenDocument(request.Params.TextDocument.URI, request.Params.TextDocument.Text)
+		uri := request.Params.TextDocument.URI
+		logger.Printf("Opened: %s", uri)
+		state.OpenDocument(uri, request.Params.TextDocument.Text)
 
-		go triggerDiagnostics(writer, logger, state, request.Params.TextDocument.URI)
+		// index project if we have a root
+		go func() {
+			path := strings.TrimPrefix(uri, "file://")
+			root := FindProjectRoot(path)
+			if root != "" {
+				logger.Printf("Indexing project at: %s", root)
+				if err := state.IndexProject(root); err != nil {
+					logger.Printf("IndexProject failed: %s", err)
+				} else {
+					logger.Printf("Project indexed successfully")
+				}
+			}
+		}()
 
+		go triggerDiagnostics(writer, logger, state, uri, true)
 	case "textDocument/didChange":
 		var request lsp.TextDocumentDidChangeNotification
 		if err := json.Unmarshal(contents, &request); err != nil {
@@ -89,7 +105,21 @@ func handleMessage(logger *log.Logger, writer io.Writer, state *analysis.State, 
 			state.UpdateDocument(request.Params.TextDocument.URI, change.Text)
 		}
 
-		scheduleDiagnostics(writer, logger, state, request.Params.TextDocument.URI)
+		scheduleDiagnostics(writer, logger, state, request.Params.TextDocument.URI, false)
+	case "textDocument/didSave":
+		var request lsp.DidSaveTextDocumentNotification
+		if err := json.Unmarshal(contents, &request); err != nil {
+			logger.Printf("textDocument/didSave: %s", err)
+		}
+		uri := request.Params.TextDocument.URI
+		go func() {
+			path := strings.TrimPrefix(uri, "file://")
+			root := analysis.FindProjectRoot(path)
+			if root != "" {
+				state.IndexProject(root)
+			}
+		}()
+		go triggerDiagnostics(writer, logger, state, uri, true)
 
 	case "textDocument/hover":
 		var request lsp.HoverRequest
@@ -129,24 +159,21 @@ func handleMessage(logger *log.Logger, writer io.Writer, state *analysis.State, 
 	}
 }
 
-func scheduleDiagnostics(writer io.Writer, logger *log.Logger, state *analysis.State, uri string) {
+func scheduleDiagnostics(writer io.Writer, logger *log.Logger, state *analysis.State, uri string, fullBuild bool) {
 	timersMu.Lock()
 	defer timersMu.Unlock()
-
 	if timer, exists := diagnosticTimers[uri]; exists {
 		timer.Stop()
 	}
 	diagnosticTimers[uri] = time.AfterFunc(300*time.Millisecond, func() {
-		triggerDiagnostics(writer, logger, state, uri)
+		triggerDiagnostics(writer, logger, state, uri, fullBuild)
 	})
 }
 
-func triggerDiagnostics(writer io.Writer, logger *log.Logger, state *analysis.State, uri string) {
-	logger.Printf("Asynchronous compiler compilation check started for: %s", uri)
-
-	diagnostics, err := state.Analyze(uri)
+func triggerDiagnostics(writer io.Writer, logger *log.Logger, state *analysis.State, uri string, fullBuild bool) {
+	diagnostics, err := state.Analyze(uri, fullBuild)
 	if err != nil {
-		logger.Printf("Analysis backend failed parsing file %s: %s", uri, err)
+		logger.Printf("Analysis failed for %s: %s", uri, err)
 		return
 	}
 
@@ -181,4 +208,19 @@ func getLogger(filename string) *log.Logger {
 		panic("hey you didnt give me a good file")
 	}
 	return log.New(logfile, "[test/lsp]", log.Ldate|log.Ltime|log.Lshortfile)
+}
+
+func FindProjectRoot(filePath string) string {
+	dir := filepath.Dir(filePath)
+	for {
+		if _, err := os.Stat(filepath.Join(dir, "project.json")); err == nil {
+			return dir
+		}
+		parent := filepath.Dir(dir)
+		if parent == dir {
+			// no project.json found, use the file's directory
+			return filepath.Dir(filePath)
+		}
+		dir = parent
+	}
 }

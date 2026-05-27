@@ -9,6 +9,16 @@ import (
 	"test/lsp/parser"
 )
 
+// StructInfo stores struct field information
+type StructInfo struct {
+	Fields []StructField
+}
+
+type StructField struct {
+	Name string
+	Type string
+}
+
 func (s *State) IndexDirectory(dirPath string) error {
 	lang := parser.GetLanguage()
 	p := sitter.NewParser()
@@ -33,7 +43,7 @@ func (s *State) IndexDirectory(dirPath string) error {
 		}
 
 		s.mu.Lock()
-		indexFile(tree, src, s.GlobalIndex)
+		indexFile(tree, src, s.GlobalIndex, s.StructIndex)
 		s.mu.Unlock()
 
 		tree.Close()
@@ -41,7 +51,7 @@ func (s *State) IndexDirectory(dirPath string) error {
 	})
 }
 
-func indexFile(tree *sitter.Tree, src []byte, index map[string][]Symbol) {
+func indexFile(tree *sitter.Tree, src []byte, index map[string][]Symbol, structs map[string]StructInfo) {
 	root := tree.RootNode()
 	currentModule := "global"
 
@@ -53,7 +63,6 @@ func indexFile(tree *sitter.Tree, src []byte, index map[string][]Symbol) {
 
 		switch child.Kind() {
 		case "module_declaration":
-			// path_ident contains the full module path
 			pathIdent := findChild(child, "path_ident")
 			if pathIdent != nil {
 				currentModule = string(src[pathIdent.StartByte():pathIdent.EndByte()])
@@ -82,10 +91,13 @@ func indexFile(tree *sitter.Tree, src []byte, index map[string][]Symbol) {
 					Kind:   lsp.StructCompletion,
 					Detail: "struct " + name,
 				})
+				// index struct fields
+				fields := extractStructFields(child, src)
+				structs[name] = StructInfo{Fields: fields}
+				structs[currentModule+"::"+name] = StructInfo{Fields: fields}
 			}
 
 		case "global_declaration":
-			// const_declaration is nested inside global_declaration
 			constDecl := findChild(child, "const_declaration")
 			if constDecl != nil {
 				nameNode := findChild(constDecl, "const_ident")
@@ -100,6 +112,39 @@ func indexFile(tree *sitter.Tree, src []byte, index map[string][]Symbol) {
 			}
 		}
 	}
+}
+
+func extractStructFields(structNode *sitter.Node, src []byte) []StructField {
+	var fields []StructField
+	body := findChild(structNode, "struct_body")
+	if body == nil {
+		return fields
+	}
+	for i := range body.ChildCount() {
+		member := body.Child(i)
+		if member == nil || member.Kind() != "struct_member_declaration" {
+			continue
+		}
+		// get field name from identifier_list -> ident
+		idList := findChild(member, "identifier_list")
+		typeNode := findChild(member, "type")
+		if idList == nil {
+			continue
+		}
+		fieldName := ""
+		nameNode := findChild(idList, "ident")
+		if nameNode != nil {
+			fieldName = string(src[nameNode.StartByte():nameNode.EndByte()])
+		}
+		fieldType := ""
+		if typeNode != nil {
+			fieldType = string(src[typeNode.StartByte():typeNode.EndByte()])
+		}
+		if fieldName != "" {
+			fields = append(fields, StructField{Name: fieldName, Type: fieldType})
+		}
+	}
+	return fields
 }
 
 func findChild(node *sitter.Node, kind string) *sitter.Node {
